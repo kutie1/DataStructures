@@ -6,34 +6,40 @@ import java.util.Map;
 public class Main {
 
     // show map
+
+    static class Product {
+        // ...
+    }
     
 
     public static void main(String[] args) {
-        // create 2 lists: Standard Java list called jList & List called myList
-        List myList = new List();
-        java.util.List<String> jList = new java.util.ArrayList<>();
-        java.util.Collection col = new java.util.ArrayList<>();
+        String s = "Hello, World!";
+        byte b = 127;
+        // 0...255 – 255 day of the year is the programmers day
+        Product p1 = new Product();             // 56 bytes
+        var copy1 = p1;
+        var copy2 = p1;
+        Product p2 = new Product();
+        Product p3 = new Product();
+        Product p4 = new Product();
+        Product p5 = new Product();
+        Product p6 = new Product();
+        Product p7 = new Product();
+        Product p8 = new Product();
+        Product p9 = new Product();
+        Product p10 = new Product();
 
-        Map<String, Double> map = new HashMap<>();
-        // Canada 9_984.670
-        map.put("Canada", 9_984.670);
-        map.put("China", 9_596.961);
-        map.put("United States", 9_833.517);
-        map.put("Brazil", 8_515.779);
-        map.put("Australia", 7_741.220);
-        map.put("India", 3_287.590);
-        map.put("Argentina", 2_780.400);
-        map.put("Kazakhstan", 2_724.902);
-        map.put("Algeria", 2_381.741);
-        map.put("Democratic Republic of the Congo", 2_344.858);
-        map.put("Mexico", 1_972.550);
+        Product[] ps = {p1, p2, p3, p4, p5, p6, p7, p8, p9, p10};
 
-        // Concatenation
-        // "hello" + 7 -> Error
-        String text = "I have a map: " + map;
-//        String text = "I have a map: " + map.toString();
+        // byte address is what data type?
 
-        System.out.println("text = " + text);
+        // 8 Gb = ??? bytes
+        int address = System.identityHashCode(p1);
+        String text = Integer.toHexString(address);
+        System.out.println("0x" + text.toUpperCase());
 
+        // 0b11111111
+
+        System.out.println(Long.toHexString(Long.MAX_VALUE).toUpperCase());
     }
 }
