@@ -2,3 +2,5 @@
     - Iterable
 2) Самостійна їх реалізація
     - binarySearch
+3) Libraries:
+    - Arrays: spliterator, stream, parallelSort, hashCode, parallelPrefix
