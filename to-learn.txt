@@ -1,3 +1,5 @@
+(next class) timely binary vs linear
+
 1) Вивчення та використання стандартної бібліотеки (Collections)
     - Iterable
 2) Самостійна їх реалізація

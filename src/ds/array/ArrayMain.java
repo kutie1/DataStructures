@@ -17,38 +17,6 @@ class Car {
 public class ArrayMain {
 
 
-    /**
-     * Перевіряє чи присутній елемент зі значенням
-     * key у відсортованому масиві arr
-     */
-    static boolean binarySearch(int[] arr, int key) {
-        // TODO: binarySearch() – test speed
-        if (arr.length == 0) {
-            return false;
-        }
-        if (arr[0] == key || arr[arr.length - 1] == key) {
-            return true;
-        }
-        int from = 0;
-        int to = arr.length - 1;
-        int middle = (from + to) / 2;
-        while (true) {
-            if (arr[middle] == key){
-                return true;
-            } else if (arr[middle] > key){
-                to = middle;
-            } else {
-                from = middle;
-            }
-            middle = (from + to) / 2;
-            // якщо middle – це початок або кінець (from or to), то потрібно зупинити пошук
-            if (middle == from || middle == to){
-                break;
-            }
-        }
-        return false;
-    }
-
     static int[] copyOf(int[] original, int newLength) {
         // TODO: copyOf() – реалізувати цей метод так, як описано в документації
         //   + test()
@@ -63,8 +31,6 @@ public class ArrayMain {
 
 
     public static void main(String[] args) {
-
-        // TODO: byte datatype
 
         int age = 32;
         int[] arr = {10, 9, 8, 7};
