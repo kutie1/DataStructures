@@ -1,4 +1,5 @@
-(next class) timely binary vs linear
+✅ (next class) timely binary vs linear
+ – indexOf in List
 
 1) Вивчення та використання стандартної бібліотеки (Collections)
     - Iterable

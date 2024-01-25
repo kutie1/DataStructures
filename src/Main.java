@@ -1,8 +1,3 @@
-import ds.list.List;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
 
     // show map
