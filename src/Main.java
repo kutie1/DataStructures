@@ -5,8 +5,6 @@ public class Main {
     static class Product {
         // ...
     }
-    
-
     public static void main(String[] args) {
         String s = "Hello, World!";
         byte b = 127;
