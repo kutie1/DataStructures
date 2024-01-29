@@ -17,19 +17,6 @@ class Car {
 public class ArrayMain {
 
 
-    static int[] copyOf(int[] original, int newLength) {
-        // TODO: copyOf() – реалізувати цей метод так, як описано в документації
-        //   + test()
-        return null;
-    }
-
-    static int[] copyOfRange(int[] original, int from, int to) {
-        // TODO: copyOfRange() – реалізувати цей метод так, як описано в документації
-        //        //   + test()
-        return null;
-    }
-
-
     public static void main(String[] args) {
 
         int age = 32;
