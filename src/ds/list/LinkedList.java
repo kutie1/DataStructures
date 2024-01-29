@@ -1,5 +1,7 @@
 package ds.list;
 
+import java.util.Objects;
+
 class Node {
     String value;
     Node next;
@@ -49,10 +51,10 @@ public class LinkedList {
      */
     String getFirst() {
         // TODO: getFirst()
-        return null;
         if (head != null) {
             return head.value;
         }
+        return null;
     }
 
     /**
@@ -75,7 +77,7 @@ public class LinkedList {
     boolean contains(String element){
         Node current = head;
         while (current != null){
-            if (current.value == element){
+            if (Objects.equals(current.value, element)){
                 return true;
             }
             current = current.next;
