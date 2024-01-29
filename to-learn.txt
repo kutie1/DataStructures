@@ -1,5 +1,7 @@
 ✅ (next class) timely binary vs linear
- – indexOf in List
+✅ indexOf in List
+ • @Before @After in Testing:
+ – оптимізувати тестування
 
 1) Вивчення та використання стандартної бібліотеки (Collections)
     - Iterable
