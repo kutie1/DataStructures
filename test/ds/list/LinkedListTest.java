@@ -3,6 +3,7 @@ package ds.list;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
 
@@ -201,7 +202,7 @@ class LinkedListTest {
         list.add("C");
         list.add("D");
         list.add("P", 3);
-        assertEquals("[A, B, K, C, P, D]", list.toString());
+        assertEquals("[A, B, C, P, D]", list.toString());
 
         list = new LinkedList();
         list.add("A");

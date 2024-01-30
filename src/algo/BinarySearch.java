@@ -1,7 +1,6 @@
 package algo;
 
-
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 // TODO: ~Implement comparison with one base interface
 public class BinarySearch {

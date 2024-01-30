@@ -89,7 +89,13 @@ public class LinkedList {
      */
     int size() {
         // TODO: size()
-        return 0;
+        Node current = head;
+        int size = 0;
+        while (current != null){
+            size ++;
+            current = current.next;
+        }
+        return size;
     }
 
     /**
@@ -99,6 +105,15 @@ public class LinkedList {
      */
     int indexOf(String element) {
         // TODO: indexOf(element)
+        Node current = head;
+        int index = 0;
+        while (current != null){
+            if (Objects.equals(current.value, element)){
+                return index;
+            }
+            index ++;
+            current = current.next;
+        }
         return -1;
     }
 
@@ -110,6 +125,21 @@ public class LinkedList {
      */
     int lastIndexOf(String element) {
         // TODO: lastIndexOf(element)
+//        Node head1 = head;
+//        int size = 0;
+//        while (head1 != null){
+//            size ++;
+//            head1 = head1.next;
+//        }
+        Node current = tail;
+        int index = size();
+        while (current != null){
+            if (Objects.equals(current.value, element)){
+                return index - 1;
+            }
+            index --;
+            current = current.prev;
+        }
         return -1;
     }
 
@@ -123,7 +153,6 @@ public class LinkedList {
         throw new IndexOutOfBoundsException();
     }
 
-    // TODO: видалення першого та останнього елемента
 
     /**
      * Видаляє перший елемент списку
@@ -131,7 +160,12 @@ public class LinkedList {
      */
     String removeFirst(){
         // TODO: removeFirst()
-        return null;
+        if (head == null){
+            return null;
+        }
+        String headValue = head.value;
+        head = head.next;
+        return headValue;
     }
 
     /**
@@ -140,7 +174,20 @@ public class LinkedList {
      */
     String removeLast(){
         // TODO: removeLast()
-        return null;
+        if (head == null) {
+            return null;
+        } else if (head == tail) {
+            String removedValue = head.value;
+            head = null;
+            tail = null;
+            return removedValue;
+        } else {
+            Node current = tail.prev;
+            String removedValue = tail.value;
+            tail = current;
+            tail.next = null;
+            return removedValue;
+        }
     }
 
     /**
@@ -161,6 +208,26 @@ public class LinkedList {
      */
     void add(String element, int index){
         // TODO: add(element, index)
+        Node current = new Node();
+        current.value = element;
+        if (index == 0) {
+            if (head != null) {
+                addFirst(element);
+            }
+            head = current;
+        } else if (index == size()){
+            addLast(element);
+        } else {
+            Node node = head;
+            for (int i = 0; i < index - 1; i++) {
+                node = node.next;
+            }
+            current.next = node.next;
+            current.prev = node;
+            node.next.prev = current;
+            node.next = current;
+        }
+
     }
 
     /**
@@ -169,6 +236,16 @@ public class LinkedList {
      */
     void addFirst(String element){
         // TODO: addFirst()
+        Node current = new Node();
+        current.value = element;
+        if (head == null) {
+            head = current;
+            tail = current;
+        } else {
+            current.next = head;
+            head.prev = current;
+            head = current;
+        }
     }
 
     /**
@@ -177,6 +254,16 @@ public class LinkedList {
      */
     void addLast(String element){
         // TODO: addLast()
+        Node current = new Node();
+        current.value = element;
+        if (head == null) {
+            head = current;
+            tail = current;
+        } else {
+            current.prev = tail;
+            tail.next = current;
+            tail = current;
+        }
     }
 
     @Override
