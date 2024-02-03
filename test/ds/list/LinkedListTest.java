@@ -209,6 +209,14 @@ class LinkedListTest {
         list.add("B");
         list.add("C");
         list.add("D");
+        list.add("P", 0);
+        assertEquals("[P, A, B, C, D]", list.toString());
+
+        list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
         list.add("M", 4);
         assertEquals("[A, B, C, D, M]", list.toString());
     }

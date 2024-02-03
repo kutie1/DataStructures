@@ -1,6 +1,6 @@
 package algo;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package ds.list;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 class Node {
@@ -26,8 +27,7 @@ public class LinkedList {
         newNode.value = element;
 
         if (head == null){
-            head = newNode;
-            tail = newNode;
+            head = tail = newNode;
         } else {
             tail.next = newNode;
             newNode.prev = tail;
@@ -40,7 +40,7 @@ public class LinkedList {
      * @return перший елемент списку
      */
     String getFirst() {
-        if (head != null) {
+        if (!isEmpty()) {
             return head.value;
         }
         throw new IndexOutOfBoundsException();
@@ -88,11 +88,10 @@ public class LinkedList {
      * @return кількість елементів у списку (найменше – 0)
      */
     int size() {
-        // TODO: size()
         Node current = head;
         int size = 0;
         while (current != null){
-            size ++;
+            size++;
             current = current.next;
         }
         return size;
@@ -104,14 +103,13 @@ public class LinkedList {
      * @return індекс елементу, якщо елемент не знайдений, повертає -1
      */
     int indexOf(String element) {
-        // TODO: indexOf(element)
         Node current = head;
         int index = 0;
         while (current != null){
             if (Objects.equals(current.value, element)){
                 return index;
             }
-            index ++;
+            index++;
             current = current.next;
         }
         return -1;
@@ -124,20 +122,13 @@ public class LinkedList {
      * @return останній індекс елементу, якщо елемент не знайдений, повертає -1
      */
     int lastIndexOf(String element) {
-        // TODO: lastIndexOf(element)
-//        Node head1 = head;
-//        int size = 0;
-//        while (head1 != null){
-//            size ++;
-//            head1 = head1.next;
-//        }
         Node current = tail;
         int index = size();
         while (current != null){
             if (Objects.equals(current.value, element)){
                 return index - 1;
             }
-            index --;
+            index--;
             current = current.prev;
         }
         return -1;
@@ -149,8 +140,28 @@ public class LinkedList {
      * @return значення, яке було видалено
      */
     String remove(int index) {
-        // TODO: remove(index)
-        throw new IndexOutOfBoundsException();
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            return removeFirst();
+        }
+        if (index == size() - 1){
+            return removeLast();
+        }
+        int i = 0;
+        Node current = head;
+        while (current != null){
+            if (i == index){
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                return current.value;
+            }
+            i++;
+            current = current.next;
+        }
+        // removing
+        return null;
     }
 
 
@@ -159,12 +170,16 @@ public class LinkedList {
      * @return видаленний елемент
      */
     String removeFirst(){
-        // TODO: removeFirst()
         if (head == null){
             return null;
         }
         String headValue = head.value;
         head = head.next;
+        if (head != null) {
+            head.prev = null;
+        } else {
+            tail = null;
+        }
         return headValue;
     }
 
@@ -173,19 +188,16 @@ public class LinkedList {
      * @return видаленний елемент
      */
     String removeLast(){
-        // TODO: removeLast()
         if (head == null) {
             return null;
-        } else if (head == tail) {
-            String removedValue = head.value;
-            head = null;
-            tail = null;
-            return removedValue;
         } else {
-            Node current = tail.prev;
             String removedValue = tail.value;
-            tail = current;
-            tail.next = null;
+            tail = tail.prev;
+            if (tail != null) {
+                tail.next = null;
+            } else {
+                head = null;
+            }
             return removedValue;
         }
     }
@@ -197,8 +209,21 @@ public class LinkedList {
      * @return попередній елемент
      */
     String set(int index, String newValue) {
-        // TODO: set(index, newValue)
-        return null;
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+        int i = 0;
+        Node current = head;
+        while (current != null){
+            if (i == index){
+                break;
+            }
+            i++;
+            current = current.next;
+        }
+        String prevValue = current.value;
+        current.value = newValue;
+        return prevValue;
     }
 
     /**
@@ -207,17 +232,13 @@ public class LinkedList {
      * @param index індекс нового елементу
      */
     void add(String element, int index){
-        // TODO: add(element, index)
-        Node current = new Node();
-        current.value = element;
         if (index == 0) {
-            if (head != null) {
-                addFirst(element);
-            }
-            head = current;
-        } else if (index == size()){
+            addFirst(element);
+        } else if (index == size()) {
             addLast(element);
         } else {
+            Node current = new Node();
+            current.value = element;
             Node node = head;
             for (int i = 0; i < index - 1; i++) {
                 node = node.next;
@@ -235,7 +256,6 @@ public class LinkedList {
      * @param element елемент який ми хочемо додати
      */
     void addFirst(String element){
-        // TODO: addFirst()
         Node current = new Node();
         current.value = element;
         if (head == null) {
@@ -253,7 +273,6 @@ public class LinkedList {
      * @param element елемент який ми хочемо додати
      */
     void addLast(String element){
-        // TODO: addLast()
         Node current = new Node();
         current.value = element;
         if (head == null) {
@@ -264,6 +283,26 @@ public class LinkedList {
             tail.next = current;
             tail = current;
         }
+    }
+
+    public void clear() {
+        // TODO: clear()
+    }
+
+    public static LinkedList copyOf(LinkedList list) {
+        // TODO: copyOf(list)
+        return null;
+    }
+
+    public LinkedList reversed() {
+        // TODO: reversed()
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO: equals(obj)
+        return super.equals(obj);
     }
 
     @Override
