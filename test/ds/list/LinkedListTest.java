@@ -3,7 +3,6 @@ package ds.list;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
 
@@ -250,5 +249,66 @@ class LinkedListTest {
         list = new LinkedList();
         list.addLast("A");
         assertEquals("[A]", list.toString());
+    }
+    @Test
+    void clear(){
+        LinkedList list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        list.clear();
+        assertTrue(list.isEmpty());
+
+        list = new LinkedList();
+        list.clear();
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    void copyOf(){
+        LinkedList list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        LinkedList copyList = LinkedList.copyOf(list);
+        assertEquals(list.toString(), copyList.toString());
+
+        list = new LinkedList();
+        list.add("A");
+        LinkedList copyList2 = LinkedList.copyOf(list);
+        assertEquals(list.toString(), copyList2.toString());
+
+        list = new LinkedList();
+        LinkedList copyList3 = LinkedList.copyOf(list);
+        assertEquals(list.toString(), copyList3.toString());
+    }
+
+    @Test
+    void reversed(){
+        LinkedList list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        LinkedList reversedList = list.reversed();
+        assertEquals("[D, C, B, A]", reversedList.toString());
+        list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        reversedList = list.reversed();
+        assertEquals("[B, A]", reversedList.toString());
+    }
+
+    @Test
+    void equals(){
+        LinkedList list = new LinkedList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        assertTrue(list.equals("A"));
+        assertFalse(list.equals("K"));
     }
 }

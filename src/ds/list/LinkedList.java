@@ -285,24 +285,85 @@ public class LinkedList {
         }
     }
 
-    public void clear() {
+    /**
+     * Видаляє всі елементи зі списку
+     */
+    void clear() {
         // TODO: clear()
+        if (head == null){
+            return;
+        }
+        Node current = head;
+        while (current != null){
+            Node next = current.next;
+            current.prev = null;
+            current.next = null;
+            current = next;
+        }
+        head = null;
+        tail = null;
     }
 
-    public static LinkedList copyOf(LinkedList list) {
+    /**
+     * Робить копію списку
+     * @param list список копію якого ми робимо
+     * @return новий список (копію)
+     */
+    static LinkedList copyOf(LinkedList list) {
         // TODO: copyOf(list)
-        return null;
+        LinkedList copyList = new LinkedList();
+        if (list.isEmpty()){
+            return copyList;
+        }
+        Node original = list.head;
+        while (original != null){
+            Node newNode = new Node();
+            newNode.value = original.value;
+
+            copyList.add(newNode.value);
+            original = original.next;
+        }
+        return copyList;
     }
 
+    /**
+     * Обертає список
+     * @return обернений список
+     */
     public LinkedList reversed() {
         // TODO: reversed()
-        return null;
+        LinkedList reversedList = new LinkedList();
+        Node current = tail;
+        while (current != null){
+            Node newNode = new Node();
+            newNode.value = current.value;
+
+            reversedList.add(newNode.value);
+            current = current.prev;
+        }
+        return reversedList;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    /**
+     * Перевіряє чи міститься у списку заданий об'єкт
+     * @param obj об'єкт який ми шукаємо
+     * @return true or false
+     */
+    public boolean equals(String obj) {
         // TODO: equals(obj)
-        return super.equals(obj);
+        Node newNode = new Node();
+        newNode.value = obj;
+        if (head == null){
+            return false;
+        }
+        Node current = head;
+        while (current != null){
+            if (Objects.equals(current.value, newNode.value)){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 
     @Override
