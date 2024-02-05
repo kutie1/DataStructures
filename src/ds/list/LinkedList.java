@@ -289,7 +289,6 @@ public class LinkedList {
      * Видаляє всі елементи зі списку
      */
     void clear() {
-        // TODO: clear()
         if (head == null){
             return;
         }
@@ -310,7 +309,6 @@ public class LinkedList {
      * @return новий список (копію)
      */
     static LinkedList copyOf(LinkedList list) {
-        // TODO: copyOf(list)
         LinkedList copyList = new LinkedList();
         if (list.isEmpty()){
             return copyList;
@@ -331,7 +329,6 @@ public class LinkedList {
      * @return обернений список
      */
     public LinkedList reversed() {
-        // TODO: reversed()
         LinkedList reversedList = new LinkedList();
         Node current = tail;
         while (current != null){
@@ -349,20 +346,28 @@ public class LinkedList {
      * @param obj об'єкт який ми шукаємо
      * @return true or false
      */
-    public boolean equals(String obj) {
-        // TODO: equals(obj)
-        Node newNode = new Node();
-        newNode.value = obj;
-        if (head == null){
+    public boolean equals(Object obj) {
+        /*
+        1. Якщо адреси рівні, то обʼєкти точно рівні
+        2. Якщо obj – це null, то вони різні
+        3. Якщо obj – це не LinkedList, тоді вони точно різні
+        4. Зробити порівняння списків
+         */
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
             return false;
         }
-        Node current = head;
-        while (current != null){
-            if (Objects.equals(current.value, newNode.value)){
-                return true;
-            }
-            current = current.next;
+        if (!(obj instanceof LinkedList)) {
+            return false;
         }
+        LinkedList other = (LinkedList) obj;
+        return this.isEqualTo(other);
+    }
+
+    private boolean isEqualTo(LinkedList other) {
+        // TODO: перевірити 2 LinkedList (this & other) на рівність
         return false;
     }
 
