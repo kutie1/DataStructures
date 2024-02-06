@@ -366,9 +366,27 @@ public class LinkedList {
         return this.isEqualTo(other);
     }
 
-    private boolean isEqualTo(LinkedList other) {
+    /**
+     * Перевіряє два списки на рівність
+     * @param other список з яким порівнюємо
+     * @return true or false
+     */
+    boolean isEqualTo(LinkedList other) {
         // TODO: перевірити 2 LinkedList (this & other) на рівність
-        return false;
+        if (other == null || this.size() != other.size()) {
+            return false;
+        }
+
+        Node currentList1 = head;
+        Node currentList2 = other.head;
+        while (currentList1 != null && currentList2 != null){
+            if (!Objects.equals(currentList1.value, currentList2.value)){
+                return false;
+            }
+            currentList1 = currentList1.next;
+            currentList2 = currentList2.next;
+        }
+        return true;
     }
 
     @Override

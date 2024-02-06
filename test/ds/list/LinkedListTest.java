@@ -393,4 +393,27 @@ class LinkedListTest {
         assertFalse(list1 == list2);
         assertTrue(list1.equals(list2));
     }
+
+    @Test
+    void isEqualTo(){
+        LinkedList list1 = new LinkedList();
+        list1.add("A");
+        list1.add("B");
+        list1.add("C");
+        list1.add("D");
+
+        LinkedList list2 = new LinkedList();
+        list2.add("A");
+        list2.add("B");
+        list2.add("C");
+        list2.add("D");
+        assertTrue(list1.isEqualTo(list2));
+
+        list2 = new LinkedList();
+        list2.add("K");
+        list2.add("B");
+        list2.add("H");
+        list2.add("B");
+        assertFalse(list1.isEqualTo(list2));
+    }
 }
