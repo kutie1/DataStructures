@@ -372,7 +372,6 @@ public class LinkedList {
      * @return true or false
      */
     boolean isEqualTo(LinkedList other) {
-        // TODO: перевірити 2 LinkedList (this & other) на рівність
         if (other == null || this.size() != other.size()) {
             return false;
         }
