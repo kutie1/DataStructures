@@ -1,5 +1,6 @@
 package ds.list;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -16,6 +17,14 @@ public class LinkedList {
     public LinkedList(){
         head = null;
         tail = null;
+    }
+
+    static LinkedList ofInts(int[] array) {
+        LinkedList list = new LinkedList();
+        for (int n : array){
+            list.add(String.valueOf(n));
+        }
+        return list;
     }
 
     /**
@@ -247,6 +256,11 @@ public class LinkedList {
             current.prev = node;
             node.next.prev = current;
             node.next = current;
+            /*
+            K, Y, V, B, N P
+            list.add(A, 3)
+            K, Y, V, A, B, N P
+             */
         }
 
     }
@@ -403,5 +417,68 @@ public class LinkedList {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    public LinkedList beggars(int n) {
+        /*
+        Solution plan:
+        1) Main approach
+        2) Exceptional case 1
+        3) Exceptional case 2
+
+        n = 2 – divide into 2 arrays
+        {1, 3, 5} - sum ->
+        {2, 4} ->
+        result (sums array): {9, 6}
+        n = 3 – divide into 3 arrays
+        {1, 4}
+        {2, 5}
+        {3}
+        result (sums array): {5, 7, 3}
+
+        exceptional situations
+        1) n > this.size()
+        2) n == 0 -> return {}
+         */
+        LinkedList[] array = createArrayWithLists(n);
+        if (n > this.size()) {
+            // TODO: ...
+        } else if (n == 0){
+            return new LinkedList();
+        } else {
+            return _beggars(array, n);
+        }
+        return null;
+    }
+
+    private LinkedList _beggars(LinkedList[] groupLists, int n) {
+        // int[] = 1, 2, 3, 4, 5, 6, 7, 8;
+        int listIndex = 0;
+        // head –> tail
+        Node node = this.head;
+        while (node != null) {
+            groupLists[listIndex].add(node.value);
+            node = node.next;
+            if (listIndex == n){
+                listIndex = 0;
+            } else {
+                listIndex ++;
+            }
+        }
+        return _beggarsSums(groupLists);
+    }
+
+    private LinkedList _beggarsSums(LinkedList[] groupLists) {
+        // TODO: порахувати суму для кожного списку в groupLists та зберегти цю суму в список sumList
+        //       повернути список sumList
+        return null;
+    }
+
+    private LinkedList[] createArrayWithLists(int n) {
+        LinkedList[] array = new LinkedList[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = new LinkedList();
+        }
+        return array;
     }
 }

@@ -423,4 +423,40 @@ class LinkedListTest {
         list2.add("B");
         assertFalse(list1.isEqualTo(list2));
     }
+
+    @Test
+    void beggars() {
+        int[] test = {1, 2, 3, 4, 5};
+        LinkedList list = LinkedList.ofInts(test);
+        LinkedList a1 = LinkedList.ofInts(new int [] {15});
+        LinkedList a2 = LinkedList.ofInts(new int[] {9, 6});
+        LinkedList a3 = LinkedList.ofInts(new int[] {5, 7, 3});
+        LinkedList a8 = LinkedList.ofInts(new int[] {1, 2, 3, 4, 5, 0, 0, 0});
+        LinkedList a0 = new LinkedList();
+        /*
+        Solution plan:
+        1) Main approach
+        2) Exceptional case 1
+        3) Exceptional case 2
+
+        n = 2 – divide into 2 arrays
+        {1, 3, 5} - sum ->
+        {2, 4} ->
+        result (sums array): {9, 6}
+        n = 3 – divide into 3 arrays
+        {1, 4}
+        {2, 5}
+        {3}
+        result (sums array): {5, 7, 3}
+
+        exceptional situations
+        1) n > this.size()
+        2) n == 0 -> return {}
+         */
+        assertEquals(a1, list.beggars(1));
+        assertEquals(a2, list.beggars(2));
+        assertEquals(a3, list.beggars(3));
+        assertEquals(a8, list.beggars(8));
+        assertEquals(a0, list.beggars(0));
+    }
 }
