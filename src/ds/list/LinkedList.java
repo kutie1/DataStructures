@@ -471,7 +471,18 @@ public class LinkedList {
     private LinkedList _beggarsSums(LinkedList[] groupLists) {
         // TODO: порахувати суму для кожного списку в groupLists та зберегти цю суму в список sumList
         //       повернути список sumList
-        return null;
+        LinkedList sumList = new LinkedList();
+        String sum = String.valueOf(0);
+        while (groupLists.length != 0){
+            for (LinkedList list : groupLists){
+                Node node = list.head;
+                String value = node.value;
+                sum += value;
+                value = node.next.value;
+                //?
+            }
+        }
+        return sumList;
     }
 
     private LinkedList[] createArrayWithLists(int n) {
