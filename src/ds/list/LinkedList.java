@@ -448,7 +448,6 @@ public class LinkedList {
         } else {
             return _beggars(array, n);
         }
-        return null;
     }
 
     private LinkedList _beggars(LinkedList[] groupLists, int n) {
@@ -476,6 +475,17 @@ public class LinkedList {
             sumList.add(String.valueOf(sum));
         }
         return sumList;
+    }
+
+    private int sum() {
+        Node current = head;
+        int sum = 0;
+        while (current != null){
+            int value = Integer.parseInt(current.value);
+            sum += value;
+            current = current.next;
+        }
+        return sum;
     }
 
     private LinkedList[] createArrayWithLists(int n) {
