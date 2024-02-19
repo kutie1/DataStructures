@@ -457,13 +457,12 @@ public class LinkedList {
         // head –> tail
         Node node = this.head;
         while (node != null) {
-            groupLists[listIndex].add(node.value);
-            node = node.next;
             if (listIndex == n){
                 listIndex = 0;
-            } else {
-                listIndex ++;
             }
+            groupLists[listIndex].add(node.value);
+            node = node.next;
+            listIndex++;
         }
         return _beggarsSums(groupLists);
     }
@@ -472,15 +471,9 @@ public class LinkedList {
         // TODO: порахувати суму для кожного списку в groupLists та зберегти цю суму в список sumList
         //       повернути список sumList
         LinkedList sumList = new LinkedList();
-        String sum = String.valueOf(0);
-        while (groupLists.length != 0){
-            for (LinkedList list : groupLists){
-                Node node = list.head;
-                String value = node.value;
-                sum += value;
-                value = node.next.value;
-                //?
-            }
+        for (LinkedList list : groupLists){
+            int sum = list.sum();
+            sumList.add(String.valueOf(sum));
         }
         return sumList;
     }
